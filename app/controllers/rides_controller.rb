@@ -2,6 +2,11 @@ class RidesController < ApplicationController
   respond_to :json
   before_action :set_ride, only: [:show, :update, :destroy]
 
+  def index
+    @ride = Ride.all
+    respond_with @ride
+  end
+
   def show
       respond_with @ride
   end
