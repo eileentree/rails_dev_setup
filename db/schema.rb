@@ -106,6 +106,9 @@ ActiveRecord::Schema.define(version: 20150412203345) do
     t.string   "RideTerrain"
     t.integer  "RideLeader"
     t.string   "Description"
+    t.string   "RideStartLocation"
+    t.string   "RidePace"
+    t.string   "RideLength"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
