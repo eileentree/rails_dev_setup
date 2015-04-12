@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'pages#home'
+
   scope '/api/v1/' do
     #TODO need to change to specific verbs
     resources :riders
