@@ -3,14 +3,20 @@ class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :update, :destroy]
 
   def show
-    respond_with @ride
+    respond_to do |format|
+      format.html { redirect_to @ride }
+      format.json { render json: @ride }
+    end
   end
 
   def update
-    if @ride.update(ride_params)
-      respond_with @ride
-    else
-      respond_with @ride.errors
+    respond_to do |format|
+      if @ride.update(ride_params)
+        format.html { redirect_to @ride }
+        format.json { render json: @ride }
+      else
+        respond_with @ride.errors
+      end
     end
 
   end
@@ -24,10 +30,15 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.new(ride_params)
 
-    if @ride.save
-      respond_with @ride
-    else
-      respond_with @ride.errors
+    respond_to do |format|
+      if @ride.save
+        format.html { redirect_to @ride }
+        format.json { render json: @ride }
+      else
+        format.html { redirect_to @ride.errors }
+        format.json { render json: @ride.errors }
+
+      end
     end
   end
 
