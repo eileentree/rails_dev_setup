@@ -1,7 +1,6 @@
 class Rider < ActiveRecord::Base
   before_create do |doc|
     doc.api_key = doc.generate_api_key
-    #doc.password =
   end
 
 

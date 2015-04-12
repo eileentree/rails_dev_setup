@@ -1,22 +1,16 @@
 class RidesController < ApplicationController
-  respond_to :json, :html
+  respond_to :json
   before_action :set_ride, only: [:show, :update, :destroy]
 
   def show
-    respond_to do |format|
-      format.html { redirect_to @ride }
-      format.json { render json: @ride }
-    end
+      respond_with @ride
   end
 
   def update
-    respond_to do |format|
       if @ride.update(ride_params)
-        format.html { redirect_to @ride }
-        format.json { render json: @ride }
+        respond_with @ride
       else
         respond_with @ride.errors
-      end
     end
 
   end
@@ -30,16 +24,13 @@ class RidesController < ApplicationController
   def create
     @ride = Ride.new(ride_params)
 
-    respond_to do |format|
       if @ride.save
-        format.html { redirect_to @ride }
-        format.json { render json: @ride }
+        respond_with @ride
       else
-        format.html { redirect_to @ride.errors }
-        format.json { render json: @ride.errors }
+        respond_with @ride.errors
 
       end
-    end
+
   end
 
 
