@@ -41,7 +41,8 @@ class RidersController < ApplicationController
     #needs Rider-permission for destroying
     @rider.destroy
 
-    respond_with :success
+      respond_with :success
+
   end
 
   private
@@ -59,6 +60,6 @@ class RidersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rider_params
-      params.permit(:Name, :Age, :Addr1, :Addr2, :City, :State, :Zip, :Region, :Email, :Phone, :Password)
+      params.permit(:Name, :Age, :Addr1, :Addr2, :City, :State, :Zip, :Region, :email, :phone, :password)
     end
 end
